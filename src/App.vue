@@ -1,24 +1,29 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img v-y width="25%" src="./assets/logo.png">
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import log from './mixins/log'
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  name: "App",
+  mixins: [log],
+  directives:{
+    y:{
+      inserted(el){
+        el.addEventListener('click',()=>{
+          console.log('y')
+        })
+      }
+    }
   }
-}
+};
 </script>
 
-<style lang="scss">
+<style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
